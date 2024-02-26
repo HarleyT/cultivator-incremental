@@ -2,7 +2,7 @@ import React from "react";
 import Dropdown from "react-dropdown";
 import { Typography , Box, useTheme } from "@mui/material";
 import { tokens } from "../theme";
-import { Button } from '@mui/base/Button';
+
 
 import Title from "../components/Title"
 // import Planet from "../components/Time";
@@ -50,7 +50,7 @@ const Hero = () => {
                         <br />
                         Real Time: <span id="realtimeDisplay">00:00:00</span>
                         <button
-                            id="pauseButton"
+                            id="pause button"
                             className="button"
                             // onClick="togglePause()"
                         >
