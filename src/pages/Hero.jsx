@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import Dropdown from "react-dropdown";
 import { Typography , Box, useTheme } from "@mui/material";
 import { tokens } from "../theme";
-
+import { useGameLoop } from "../components/Timer";
 
 import Title from "../components/Title"
 // import Planet from "../components/Time";
@@ -34,6 +34,16 @@ const locationLabel = locations[0];
 
 
 const Hero = () => {
+
+    const [time, setTime] = useState(0);
+    const [deltaTime, setDeltaTime] = useState(0);
+    const [colour, setColour] = useState();
+  
+    useGameLoop((time, deltaTime) => {
+      setTime(time);
+      setDeltaTime(deltaTime);
+    });
+
     const theme = useTheme();
     const colours = tokens(theme.palette.mode);
     return (
@@ -48,6 +58,8 @@ const Hero = () => {
                     <div style={{ color: "red" }}>
                         Lifespan: <span id="lifespanDisplay">70</span> years
                         <br />
+                        <p>{time}</p>
+                        {/* <p>{deltaTime}</p> */}
                         Real Time: <span id="realtimeDisplay">00:00:00</span>
                         <button
                             id="pause button"
