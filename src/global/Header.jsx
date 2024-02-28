@@ -7,8 +7,6 @@ import { useContext } from "react";
 // import { Menu, MenuItem } from "react-pro-sidebar";
 import { Typography, Box, useTheme, IconButton } from "@mui/material";
 import { ColourModeContext, tokens } from "../theme";
-import LightModeOutlinedIcon from "@mui/icons-material/LightmodeOutlined";
-import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 
 
 const Header = () => {
@@ -47,9 +45,9 @@ const Header = () => {
 			<Box display="flex">
 				<IconButton onClick={colourmode.toggleColourMode}>
 					{theme.palette.mode === 'dark' ? (
-						<DarkModeOutlinedIcon />
+						<span>Dark</span>
 					) : (
-						<LightModeOutlinedIcon />
+						<span>Light</span>
 					)}
 				</IconButton>
 				<button onClick={() => {
