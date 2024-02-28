@@ -1,11 +1,13 @@
-import React, {useState} from "react";
-import Dropdown from "react-dropdown";
-import { Typography , Box, useTheme } from "@mui/material";
+import { useState } from "react";
+import { Box, useTheme, Stack, LinearProgress } from "@mui/material";
 import { tokens } from "../theme";
 import { useGameLoop } from "../components/Timer";
+import { useSelector } from 'react-redux';
+import TaskButton from "../components/TaskButton";
+import DayNightCycle from "../components/DayNightCycle";
+
 
 import Title from "../components/Title"
-// import Planet from "../components/Time";
 
 const planets = [
     'Earth', 'Mars', 'Venus', 'Planet X'
@@ -34,6 +36,7 @@ const locationLabel = locations[0];
 
 
 const Hero = () => {
+    const user = useSelector((state) => state.user.value);
 
     const [time, setTime] = useState(0);
     const [deltaTime, setDeltaTime] = useState(0);
@@ -49,12 +52,16 @@ const Hero = () => {
     return (
         <>
             <Box>
+                <Stack sx={{width: '100%'}}>
+                    <LinearProgress variant="indeterminate"/>
+                </Stack>
                 <Box display="flex" justifyContent="space-between" alignItems="center">
                 <Title title="Main"/>
                 </Box>
             </Box>
             <div className="container tab" id="main">
                 <div className="box1">
+                    <div className="user">Username:{user.name}</div>
                     <div style={{ color: "red" }}>
                         Lifespan: <span id="lifespanDisplay">70</span> years
                         <br />
@@ -69,11 +76,7 @@ const Hero = () => {
                             Pause
                         </button>
                     </div>
-                    <img
-                        src="./img/Nightcycle.gif"
-                        alt="Day/Night Cycle"
-                        className="anim-cycle"
-                    />
+                    <DayNightCycle />
                     <div className="location">
                         <span>Location:</span>
                         <span>{locationLabel}</span>
@@ -104,9 +107,9 @@ const Hero = () => {
                         </button>
                     </div>
                     <div className="task-container">
-                        <button className="task Task1">
+                        <TaskButton className="task Task1">
                         01:00
-                        </button>
+                        </TaskButton>
                         <button className="task Task2">
                         02:00
                         </button>

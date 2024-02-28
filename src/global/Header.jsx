@@ -1,45 +1,29 @@
 import { Link } from "react-router-dom";
 
+import { useDispatch } from 'react-redux';
+import { login, logout } from '../state/user';
+
 import { useContext } from "react";
 // import { Menu, MenuItem } from "react-pro-sidebar";
 import { Typography, Box, useTheme, IconButton } from "@mui/material";
 import { ColourModeContext, tokens } from "../theme";
 import LightModeOutlinedIcon from "@mui/icons-material/LightmodeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 
-// import { NavLink } from "react-router-dom";
-
-// const Item = ({ title, to, selected, setSelected}) => {
-// 	const theme = useTheme();
-// 	const colours = tokens(theme.palette.mode);
-// 	const colourmode = useContext(ColourModeContext);
-
-// 	return (
-// 		<MenuItem
-// 		active={selected === title}
-// 		style={{ colour: colours.black[100]}}
-// 		onClick={() => setSelected(title)}
-// 		>
-// 			<Typography>{title}</Typography>
-// 			<Link to={to}/>
-// 		</MenuItem>
-// 	);
-// };
 
 const Header = () => {
 	const theme = useTheme();
 	const colours = tokens(theme.palette.mode);
 	const colourmode = useContext(ColourModeContext);
-	// const [selected, setSelected] = useState("Hero");
+
+	const dispatch = useDispatch();
 
 	return (
 		<Box display="flex">
 			<Box>
 				<div className="logo">
 					<a href="https://github.com/HarleyT/cultivator-incremental">
-						<img src="" alt="Cultivator Incremental" />
+						<img src="/assets/golden.png" alt="Cultivator Incremental" />
 					</a>
 				</div>
 			</Box>
@@ -68,12 +52,14 @@ const Header = () => {
 						<LightModeOutlinedIcon />
 					)}
 				</IconButton>
-				<IconButton>
-					<NotificationsOutlinedIcon></NotificationsOutlinedIcon>
-				</IconButton>
-				<IconButton>
-					<SettingsOutlinedIcon></SettingsOutlinedIcon>
-				</IconButton>
+				<button onClick={() => {
+					dispatch(login({name: "Ryathimus"}));
+					}}> Login
+				</button>
+				<button onClick={() => {
+					dispatch(logout());
+					}}> Logout
+				</button>
 			</Box>
 		</Box>
 	);

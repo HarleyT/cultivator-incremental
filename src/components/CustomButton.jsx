@@ -27,7 +27,7 @@ const SvgButton = React.forwardRef(function SvgButton(props, ref) {
 
 
 export default function CustomButton() {
-  return <SvgButton></SvgButton>;
+  return <SvgButton>Button</SvgButton>;
 }
 
 const blue = {
