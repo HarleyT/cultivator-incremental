@@ -15,7 +15,6 @@ import TrainingEnergy from "./pages/TrainingEnergy";
 import Storage from "./pages/Storage";
 import Settings from "./pages/Settings.jsx"
 
-
 import Header from "./global/Header";
 import Footer from "./global/Footer";
 

@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Box, useTheme, Stack, LinearProgress } from "@mui/material";
 import { tokens } from "../theme";
 import { useGameLoop } from "../components/Timer";
 import { useSelector } from 'react-redux';
+import { useQuery } from "@tanstack/react-query";
+
 import TaskButton from "../components/TaskButton";
 import DayNightCycle from "../components/DayNightCycle";
+import Universe from "../components/Universe";
 
+import metadata from "../global/data.json";
+import { togglePause } from '../global/gamedata';
 
 import Title from "../components/Title"
 
@@ -34,9 +39,13 @@ const locations = [
 ];
 const locationLabel = locations[0];
 
-
 const Hero = () => {
     const user = useSelector((state) => state.user.value);
+
+    const { data } = useQuery({
+        queryKey: ['name'],
+        queryFn: () => metadata,
+    });
 
     const [time, setTime] = useState(0);
     const [deltaTime, setDeltaTime] = useState(0);
@@ -46,6 +55,10 @@ const Hero = () => {
       setTime(time);
       setDeltaTime(deltaTime);
     });
+
+    const updatedTime = Math.round(Math.round(time)/1000);
+
+    const daynightTime = DayNightCycle(time)
 
     const theme = useTheme();
     const colours = tokens(theme.palette.mode);
@@ -65,27 +78,18 @@ const Hero = () => {
                     <div style={{ color: "red" }}>
                         Lifespan: <span id="lifespanDisplay">70</span> years
                         <br />
-                        <p>{time}</p>
-                        {/* <p>{deltaTime}</p> */}
+                        <p>{updatedTime} seconds</p>
                         Real Time: <span id="realtimeDisplay">00:00:00</span>
-                        <button
-                            id="pause button"
-                            className="button"
-                            // onClick="togglePause()"
-                        >
-                            Pause
-                        </button>
                     </div>
                     <DayNightCycle />
                     <div className="location">
                         <span>Location:</span>
-                        <span>{locationLabel}</span>
+                        <span></span>
                     </div>
                 </div>
                 <div className="box2">
                     <div className="planet-selection">
-                        {/* <Dropdown options={planetLabel} onChange={this._onSelect} value={"Earth"} placeholder="Choose Planet" /> */}
-                        <p>{planetTime}</p>
+                        <p></p>
                     </div>
                     <div className="animation-box">
                     </div>
@@ -107,7 +111,7 @@ const Hero = () => {
                         </button>
                     </div>
                     <div className="task-container">
-                        <TaskButton className="task Task1">
+                        <TaskButton className="task" id="01:00">
                         01:00
                         </TaskButton>
                         <button className="task Task2">

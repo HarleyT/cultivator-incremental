@@ -1,6 +1,7 @@
 import { Box, IconButton, useTheme } from "@mui/material";
 import { ColourModeContext, tokens } from "../theme";
 import { useContext } from "react";
+import gameData from '../global/gamedata';
 
 
 import Title from "../components/Title"
@@ -20,14 +21,20 @@ const Settings = () => {
             </Box>
             <div className="container tab" id="settings">
                 <div className="box1">
-                    <button className="save"> Import Save</button>
-                    <button className="save"> Export Save</button>
+                    <button className="save"
+                    onClick={() => {
+                        gameData.importGameData();
+                    }}> Import Save</button>
+                    <button className="save"
+                    onClick={() => {
+                        gameData.exportGameData();
+                    }}> Import Save</button>
                 </div>
                 <div className="box2">
                     <div className="Stats">
-                        <p>You started playing the game on ##/##/20##.</p>
-                        <p>You have played for ##:## real time.</p>
-                        <p>Your existence has spanned #.##k days game time.</p>
+                        <p>You started playing the game on <span id="startDateDisplay"></span>.</p>
+                        <p>You have played for <span id="playedRealTimeDisplay"></span> real time.</p>
+                        <p>Your existence has spanned <span id="playedGameTimeDisplay"></span> days game time.</p>
                     </div>
                     <button className="reset"> Hard Reset Game</button>
                 </div>

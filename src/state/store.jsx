@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "../state/user";
-import planetReducer from "../state/planets";
+import pauseReducer from "../state/pause";
 
 export const store = configureStore({
     reducer: {
         user: userReducer,
-        planet: planetReducer,
+        pause: pauseReducer,
     },
 });
 

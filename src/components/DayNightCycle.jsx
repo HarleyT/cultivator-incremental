@@ -2,25 +2,44 @@ import React, { useState, useEffect } from "react";
 
 export default function DayNightCycle() {
   const [time, setTime] = useState(15);
+  const [running, setRunning] = useState(true);
+  const [loop, setLoop] = useState(0);
   
   useEffect(() => {
     let interval = setInterval(() => {
       clearInterval(interval);
       if (time === 0) {
         setTime(15);
+        setLoop(loop + 1);
       } else {
         setTime(time - 1);
       }
     }, 1000);
-  }, [time]);
+  }, [time, loop]);
 
-  // const timerSeconds = time < 10 ? '0${time}' : time;
+
+  const handlePause = () => {
+    if(running === true){
+      setRunning(false);
+      console.log("pause")
+    } else {
+      setRunning(true);
+      console.log("play")
+    }
+
+  }
 
   return (
     <div className="daynightcycle">
       <div className="timer">
         {time}
       </div>
+      <div className="loop">
+        {loop} Days
+      </div>
+      <button onClick={handlePause}>
+        Pause
+      </button>
     </div>
   )
   
