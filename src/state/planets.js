@@ -4,13 +4,13 @@ const initialStateValue = {planets: [], timestates: []};
 
 export const planetSlice = createSlice({
     name: "planet",
-    initialState: {value: {planets: [], timestates: []}},
+    initialState: initialStateValue,
     reducers: {
         name: (state) => {
             state.value = "Earth";
         },
         time: (state) => {
-            state.value = "10";
+            state.value = 10;
         },
     }
 });

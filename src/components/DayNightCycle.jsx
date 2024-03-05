@@ -1,50 +1,77 @@
 import React, { useState, useEffect } from "react";
+import DayNightTimer from "./DayNightTimer";
+import { BsFillPlayFill, BsPauseFill } from "react-icons/bs";
 
 export default function DayNightCycle() {
   const [time, setTime] = useState(15);
   const [running, setRunning] = useState(true);
   const [loop, setLoop] = useState(0);
+
   
   useEffect(() => {
-    let interval = setInterval(() => {
-      clearInterval(interval);
-      if (time === 0) {
+    let interval;
+    if (running) {
+      interval = setInterval(() => {
+        if (time === 0) {
         setTime(15);
         setLoop(loop + 1);
-      } else {
-        setTime(time - 1);
-      }
-    }, 1000);
-  }, [time, loop]);
-
-
-  const handlePause = () => {
-    if(running === true){
-      setRunning(false);
-      console.log("pause")
-    } else {
-      setRunning(true);
-      console.log("play")
+        } else {
+          setTime(time - 1);
+        }
+      }, 1000);
     }
+    return () => {
+      clearInterval(interval);
+    };
+  }, [time, loop, running]);
 
+  function playButton(){
+    if(time !== 0) {
+      setRunning(true);
+    }
   }
 
+  function pauseButton() {
+    setRunning(false);
+  }
+  
+  const changeTime = (e) => {
+    setTime(e.target.value);
+  }
+
+
   return (
+    <>
     <div className="daynightcycle">
-      <div className="timer">
-        {time}
-      </div>
-      <div className="loop">
-        {loop} Days
-      </div>
-      <button onClick={handlePause}>
-        Pause
+      <DayNightTimer time={time} loop={loop} running={running} changeTime={changeTime} pauseButton={pauseButton} playButton={playButton}/>
+      {!running && (
+      <button className="play" onClick={playButton}>
+      <BsFillPlayFill />
       </button>
+      )}
+      {running && (
+      <button className="pause" onClick={pauseButton}>
+      <BsPauseFill />
+      </button>
+      )}
     </div>
-  )
+    </>
+  );
   
 }
 
+
+// useEffect(() => {
+//   let interval = setInterval(() => {
+//     clearInterval(interval);
+//     if (time === 0) {
+//       setTime(15);
+//       setLoop(loop + 1);
+//     } else {
+//       setTime(time - 1);
+//     }
+//   }, 1000);
+// }, [time, loop]);
 
 // import * as React from 'react';
 // import Box from '@mui/material/Box';

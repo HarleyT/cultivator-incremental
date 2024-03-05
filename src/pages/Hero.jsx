@@ -5,12 +5,11 @@ import { useGameLoop } from "../components/Timer";
 import { useSelector } from 'react-redux';
 import { useQuery } from "@tanstack/react-query";
 
-import TaskButton from "../components/TaskButton";
+import TaskManager from "../components/TaskManager/TaskManager";
 import DayNightCycle from "../components/DayNightCycle";
-import Universe from "../components/Universe";
+// import Universe from "../components/Universe";
 
 import metadata from "../global/data.json";
-import { togglePause } from '../global/gamedata';
 
 import Title from "../components/Title"
 
@@ -58,8 +57,6 @@ const Hero = () => {
 
     const updatedTime = Math.round(Math.round(time)/1000);
 
-    const daynightTime = DayNightCycle(time)
-
     const theme = useTheme();
     const colours = tokens(theme.palette.mode);
     return (
@@ -78,8 +75,7 @@ const Hero = () => {
                     <div style={{ color: "red" }}>
                         Lifespan: <span id="lifespanDisplay">70</span> years
                         <br />
-                        <p>{updatedTime} seconds</p>
-                        Real Time: <span id="realtimeDisplay">00:00:00</span>
+                        Real Time: <span id="realtimeDisplay">{updatedTime} seconds</span>
                     </div>
                     <DayNightCycle />
                     <div className="location">
@@ -93,96 +89,8 @@ const Hero = () => {
                     </div>
                     <div className="animation-box">
                     </div>
-                    <div className="action-menu" id="action-menu">
-                        <button className="action" id="energy">
-                        Tr. Energy
-                        </button>
-                        <button className="action" id="physical">
-                        Tr. Pysical
-                        </button>
-                        <button className="action" id="meditate">
-                        Meditate
-                        </button>
-                        <button className="action" id="exploration">
-                        Exploration
-                        </button>
-                        <button className="action" id="rest">
-                        Rest
-                        </button>
-                    </div>
-                    <div className="task-container">
-                        <TaskButton className="task" id="01:00">
-                        01:00
-                        </TaskButton>
-                        <button className="task Task2">
-                        02:00
-                        </button>
-                        <button className="task Task3">
-                        03:00
-                        </button>
-                        <button className="task Task4">
-                        04:00
-                        </button>
-                        <button className="task Task5">
-                        05:00
-                        </button>
-                        <button className="task Task6">
-                        06:00
-                        </button>
-                        <button className="task Task7">
-                        07:00
-                        </button>
-                        <button className="task Task8">
-                        08:00
-                        </button>
-                        <button className="task Task9">
-                        09:00
-                        </button>
-                        <button className="task Task10">
-                        10:00
-                        </button>
-                        <button className="task Task11">
-                        11:00
-                        </button>
-                        <button className="task Task12">
-                        12:00
-                        </button>
-                        <button className="task Task13">
-                        13:00
-                        </button>
-                        <button className="task Task14">
-                        14:00
-                        </button>
-                        <button className="task Task15">
-                        15:00
-                        </button>
-                        <button className="task Task16">
-                        16:00
-                        </button>
-                        <button className="task Task17">
-                        17:00
-                        </button>
-                        <button className="task Task18">
-                        18:00
-                        </button>
-                        <button className="task Task19">
-                        19:00
-                        </button>
-                        <button className="task Task20">
-                        20:00
-                        </button>
-                        <button className="task Task21">
-                        21:00
-                        </button>
-                        <button className="task Task22">
-                        22:00
-                        </button>
-                        <button className="task Task23">
-                        23:00
-                        </button>
-                        <button className="task Task24">
-                        24:00
-                        </button>
+                    <div className="task-manager">
+                        <TaskManager />
                     </div>
                 </div>
                 <div className="box3">
@@ -192,11 +100,13 @@ const Hero = () => {
                         <span>Age:</span>
                         <span>{ageLabel}</span>
                     </div>
+                    <br />
                     <img
                         src="./img/CharacterSpritePH.png"
                         alt="Character Sprite"
                         className="anim-char"
                     />
+                    <br />
                     <div className="state">
                         <span>Physical State</span>
                         <span>Mental State</span>

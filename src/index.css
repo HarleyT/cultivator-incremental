@@ -81,7 +81,7 @@ footer {
 .box2 {
 	display: grid;
 	grid-column: 1/10;
-	grid-row: 3/10;
+	grid-row: 3/12;
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
 }
@@ -107,21 +107,39 @@ footer {
 }
 
 /* Box 2 Container */
-.task-container {
+.task-manager {
 	display: grid;
 	grid-column: 2/10;
-	grid-row: 4/8;
+	grid-row: 4/10;
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
 }
 
 /* Box 2 Container */
-.action-menu {
+.task-area {
 	display: grid;
-	grid-column: 2/10;
-	grid-row: 10;
+	display: inline;
+	grid-column: 1/10;
+	grid-row: 1/5;
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
+}
+
+/* Box 2 Container */
+.task-action {
+	display: grid;
+	display: inline;
+	grid-column: 1/10;
+	grid-row: 6;
+	grid-template-columns: subgrid;
+	grid-template-rows: subgrid;
+}
+
+.task {
+	padding:0%;
+	width: 80px;
+	height: 40px;
+	/* background: black; */
 }
 
 /* Box 2 Container */
