@@ -1,23 +1,21 @@
-import React, { useState } from 'react';
-import { DndContext, closestCorners } from '@dnd-kit/core';
+import React from 'react';
+
 import TaskArea from './TaskArea';
-import TaskAction from "./TaskAction";
+
 
 function TaskManager() {
-  const [tasks, setTasks] = useState([
- 
-  ]);
+
+
+
 
   return (
     <>
-      <DndContext collisionDetection={closestCorners}>
         <div className='task-area'>
           <TaskArea />
         </div>
-        <div className='task-action'>
+        {/* <div className='task-action'>
           <TaskAction task={tasks}/>
-        </div>
-      </DndContext>
+        </div> */}
     </>
   )
 }

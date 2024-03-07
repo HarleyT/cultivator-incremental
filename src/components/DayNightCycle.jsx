@@ -4,7 +4,7 @@ import { BsFillPlayFill, BsPauseFill } from "react-icons/bs";
 
 export default function DayNightCycle() {
   const [time, setTime] = useState(15);
-  const [running, setRunning] = useState(true);
+  const [running, setRunning] = useState(false);
   const [loop, setLoop] = useState(0);
 
   

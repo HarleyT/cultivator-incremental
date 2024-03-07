@@ -12,6 +12,7 @@ import DayNightCycle from "../components/DayNightCycle";
 import metadata from "../global/data.json";
 
 import Title from "../components/Title"
+import Task from "../components/TaskManager/Task";
 
 const planets = [
     'Earth', 'Mars', 'Venus', 'Planet X'
@@ -80,7 +81,7 @@ const Hero = () => {
                     <DayNightCycle />
                     <div className="location">
                         <span>Location:</span>
-                        <span></span>
+                        <span>{Task.task}</span>
                     </div>
                 </div>
                 <div className="box2">
