@@ -1,9 +1,9 @@
 
-import { Box, useTheme, FormControl, NativeSelect, InputLabel } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { tokens } from "../theme";
 
-import Title from "../components/Title"
-import Universe from "../components/Universe";
+import Title from "../components/Title";
+import ExplorationManager from "../components/ExplorationManager";
 
 
 const Exploration = () => {
@@ -20,7 +20,7 @@ const Exploration = () => {
                 <div className="box1">
                 </div>
                 <div className="box2">
-                    <div className="universe"><Universe/></div>
+                    <div><ExplorationManager /></div>
                     <span></span>
                 </div>
                 <div className="box3">

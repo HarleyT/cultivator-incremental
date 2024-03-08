@@ -47,10 +47,8 @@ export default function Task() {
   return (
     <>
     <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="demo-select-small-label">Task</InputLabel>
+      <InputLabel >Task</InputLabel>
       <Select
-        labelId="demo-select-small-label"
-        id="demo-select-small"
         value={task}
         label="Task"
         onChange={handleChange}
@@ -61,9 +59,3 @@ export default function Task() {
     </>
   );
 }
-
-
-// {droppables.map((id) => (
-//   <Droppable id={id} key={id}>
-//     <Item>{id}</Item>
-//   </Droppable>

@@ -12,7 +12,8 @@ import DayNightCycle from "../components/DayNightCycle";
 import metadata from "../global/data.json";
 
 import Title from "../components/Title"
-import Task from "../components/TaskManager/Task";
+// import Task from "../components/TaskManager/Task";
+// import { HeroContext } from "../global/context";
 
 const planets = [
     'Earth', 'Mars', 'Venus', 'Planet X'
@@ -62,6 +63,7 @@ const Hero = () => {
     const colours = tokens(theme.palette.mode);
     return (
         <>
+        {/* <HeroContext.Provider value={user}> */}
             <Box>
                 <Stack sx={{width: '100%'}}>
                     <LinearProgress variant="indeterminate"/>
@@ -81,7 +83,7 @@ const Hero = () => {
                     <DayNightCycle />
                     <div className="location">
                         <span>Location:</span>
-                        <span>{Task.task}</span>
+                        <span></span>
                     </div>
                 </div>
                 <div className="box2">
@@ -115,6 +117,7 @@ const Hero = () => {
                     </div>
                 </div>                        
             </div>
+            {/* </HeroContext.Provider> */}
         </>
     )
 }
