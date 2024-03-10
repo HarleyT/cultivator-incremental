@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Box, useTheme, Stack, LinearProgress } from "@mui/material";
 import { tokens } from "../theme";
 import { useGameLoop } from "../components/Timer";
@@ -63,7 +63,6 @@ const Hero = () => {
     const colours = tokens(theme.palette.mode);
     return (
         <>
-        {/* <HeroContext.Provider value={user}> */}
             <Box>
                 <Stack sx={{width: '100%'}}>
                     <LinearProgress variant="indeterminate"/>
@@ -117,7 +116,6 @@ const Hero = () => {
                     </div>
                 </div>                        
             </div>
-            {/* </HeroContext.Provider> */}
         </>
     )
 }
