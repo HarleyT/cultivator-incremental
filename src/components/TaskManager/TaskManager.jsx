@@ -1,12 +1,7 @@
-import React from 'react';
-
 import TaskArea from './TaskArea';
 
 
 function TaskManager() {
-
-
-
 
   return (
     <>

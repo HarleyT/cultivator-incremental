@@ -1,5 +1,10 @@
 import { useState, useEffect, useReducer } from "react";
 import { BsFillPlayFill, BsPauseFill } from "react-icons/bs";
+import AppState from "../App";
+
+// import { PlanetContext } from "../state/planetState";
+// import { signal } from "@preact/signals";
+import { useContext } from "preact/hooks";
 
 const ACTIONS = {
   EARTH: 'Earth',
@@ -18,6 +23,8 @@ function reducer(state, action) {
 }
 
 export default function DayNightCycle() {
+  const {realm} = useContext(AppState);
+
   const [state, dispatch] = useReducer(reducer, {planet: 24})
 
   const [time, setTime] = useState(state.planet);
@@ -87,6 +94,7 @@ export default function DayNightCycle() {
       <button onClick={earth}>earth</button>
       <button onClick={mars}>mars</button>
       <span>{state.planet}</span>
+      <span>{realm}</span>
     </div>
     
     </>

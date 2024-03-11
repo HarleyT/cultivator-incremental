@@ -1,6 +1,10 @@
 import { ColourModeContext, useMode } from './theme.js';
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import { createContext } from 'react';
+import location from './state/locationState.jsx'
+// import PlanetContext from './state/planetState.jsx'
 
 import './index.css'
 
@@ -18,33 +22,37 @@ import Settings from "./pages/Settings.jsx"
 import Header from "./global/Header";
 import Footer from "./global/Footer";
 
+const AppState = createContext();
+
 function App() {
   const [theme, colourMode] = useMode();
 
   return (
-  <ColourModeContext.Provider value={colourMode}>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-        <div className="App">
-          <Header fixed="top" />
-          <div className="content">
-            <Routes>
-              <Route path="*" element={<Hero />} />
-              <Route path="/Character" element={<Character />} />
-              <Route path="/Dao" element={<Dao />} />
-              <Route path="/Combat" element={<Combat />} />
-              <Route path="/Exploration" element={<Exploration />} />
-              <Route path="/TrainingSkills" element={<TrainingSkills />} />
-              <Route path="/TrainingPhysical" element={<TrainingPhysical />} />
-              <Route path="/TrainingEnergy" element={<TrainingEnergy />} />
-              <Route path="/Storage" element={<Storage />} />
-              <Route path="/Settings" element={<Settings />} />
-            </Routes>
+  <AppState.Provider value={location}>
+    <ColourModeContext.Provider value={colourMode}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+          <div className="App">
+            <Header fixed="top" />
+            <div className="content">
+              <Routes>
+                <Route path="*" element={<Hero />} />
+                <Route path="/Character" element={<Character />} />
+                <Route path="/Dao" element={<Dao />} />
+                <Route path="/Combat" element={<Combat />} />
+                <Route path="/Exploration" element={<Exploration />} />
+                <Route path="/TrainingSkills" element={<TrainingSkills />} />
+                <Route path="/TrainingPhysical" element={<TrainingPhysical />} />
+                <Route path="/TrainingEnergy" element={<TrainingEnergy />} />
+                <Route path="/Storage" element={<Storage />} />
+                <Route path="/Settings" element={<Settings />} />
+              </Routes>
+            </div>
+            <Footer fixed="bottom" />
           </div>
-          <Footer fixed="bottom" />
-        </div>
-    </ThemeProvider>
-  </ColourModeContext.Provider>
+      </ThemeProvider>
+    </ColourModeContext.Provider>
+  </AppState.Provider>
   );
 }
 

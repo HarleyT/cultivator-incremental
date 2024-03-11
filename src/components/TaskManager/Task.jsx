@@ -36,9 +36,9 @@ export default function Task() {
     return <MenuItem key={time.id} value={time.title}>{time.title}</MenuItem>;
     })
 
-  const inputlabel = timeValue.value.map(inlabel => {
-    return <InputLabel key={inlabel.id}>{inlabel.value}</InputLabel>;
-    })
+  // const inputlabel = timeValue.value.map(inlabel => {
+  //   return <InputLabel key={inlabel.id}>{inlabel.value}</InputLabel>;
+  //   })
 
   const handleChange = (event) => {
     setTask(event.target.value);
