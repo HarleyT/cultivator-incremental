@@ -1,10 +1,11 @@
-import { useState, useEffect, useReducer } from "react";
+import { useState, useEffect, useReducer, useContext } from "react";
 import { BsFillPlayFill, BsPauseFill } from "react-icons/bs";
-import AppState from "../App";
+import LocationContext from "../App";
+import { LocationContextProvider } from "../state/locationContext";
 
 // import { PlanetContext } from "../state/planetState";
 // import { signal } from "@preact/signals";
-import { useContext } from "preact/hooks";
+// import { useContext } from "preact/hooks";
 
 const ACTIONS = {
   EARTH: 'Earth',
@@ -23,7 +24,7 @@ function reducer(state, action) {
 }
 
 export default function DayNightCycle() {
-  const {realm} = useContext(AppState);
+  // const location = useContext(LocationContextProvider);
 
   const [state, dispatch] = useReducer(reducer, {planet: 24})
 
@@ -94,7 +95,7 @@ export default function DayNightCycle() {
       <button onClick={earth}>earth</button>
       <button onClick={mars}>mars</button>
       <span>{state.planet}</span>
-      <span>{realm}</span>
+      {/* <span>{location}</span> */}
     </div>
     
     </>

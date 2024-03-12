@@ -1,6 +1,6 @@
 import { signal } from "@preact/signals";
 
-function location() {
+export function location() {
   const planets = signal([
     {earth: signal("Hi i'm Earth"),
     mars: signal(12),

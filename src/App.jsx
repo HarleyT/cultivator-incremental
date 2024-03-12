@@ -1,34 +1,30 @@
 import { ColourModeContext, useMode } from './theme.js';
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
-import { createContext } from 'react';
-import location from './state/locationState.jsx'
-// import PlanetContext from './state/planetState.jsx'
+import LocationContextProvider from './state/locationContext.jsx'
 
 import './index.css'
 
-import Hero from "./pages/Hero";
+import Hero from "./pages/Hero.jsx";
 import Character from "./pages/Character.jsx"
-import Combat from "./pages/Combat";
-import Dao from "./pages/Dao";
-import Exploration from "./pages/Exploration";
-import TrainingSkills from "./pages/TrainingSkills";
-import TrainingPhysical from "./pages/TrainingPhysical";
-import TrainingEnergy from "./pages/TrainingEnergy";
-import Storage from "./pages/Storage";
+import Combat from "./pages/Combat.jsx";
+import Dao from "./pages/Dao.jsx";
+import Exploration from "./pages/Exploration.jsx";
+import TrainingSkills from "./pages/TrainingSkills.jsx";
+import TrainingPhysical from "./pages/TrainingPhysical.jsx";
+import TrainingEnergy from "./pages/TrainingEnergy.jsx";
+import Storage from "./pages/Storage.jsx";
 import Settings from "./pages/Settings.jsx"
 
-import Header from "./global/Header";
-import Footer from "./global/Footer";
+import Header from "./global/Header.jsx";
+import Footer from "./global/Footer.jsx";
 
-const AppState = createContext();
 
 function App() {
   const [theme, colourMode] = useMode();
 
   return (
-  <AppState.Provider value={location}>
+  // <LocationContextProvider>
     <ColourModeContext.Provider value={colourMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
@@ -52,7 +48,7 @@ function App() {
           </div>
       </ThemeProvider>
     </ColourModeContext.Provider>
-  </AppState.Provider>
+    // </LocationContextProvider>
   );
 }
 
